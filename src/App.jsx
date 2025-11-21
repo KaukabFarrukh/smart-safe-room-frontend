@@ -82,9 +82,13 @@ function App() {
       const base64 = dataUrl.split(",")[1];
 
       try {
-        const response = await axios.post("http://localhost:5000/analyze-room", {
-          imageBase64: base64,
-        });
+        const response = await axios.post(
+  "https://smart-safe-room-backend-app-b5h5apd5fjgrhpej.swedencentral-01.azurewebsites.net/analyze-room",
+  {
+    imageBase64: base64
+  }
+);
+
 
         const data = response.data;
         setResult(data);
