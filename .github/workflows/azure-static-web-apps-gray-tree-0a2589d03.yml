@@ -14,6 +14,11 @@ jobs:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
+    # 👇 NEW: make Speech env vars available to Vite at build time
+    env:
+      VITE_AZURE_SPEECH_KEY: ${{ secrets.VITE_AZURE_SPEECH_KEY }}
+      VITE_AZURE_SPEECH_REGION: ${{ secrets.VITE_AZURE_SPEECH_REGION }}
+
     steps:
       - uses: actions/checkout@v3
         with:
